@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Mining Empire</title>
+		<link rel="stylesheet" href="/src/assets/css/style.css" />
+		<link
+			rel="apple-touch-icon"
+			sizes="180x180"
+			href="/favicon/apple-touch-icon.png"
+		/>
+		<link
+			rel="icon"
+			type="image/png"
+			sizes="32x32"
+			href="/favicon/favicon-32x32.png"
+		/>
+		<link
+			rel="icon"
+			type="image/png"
+			sizes="16x16"
+			href="/favicon/favicon-16x16.png"
+		/>
+		<link rel="manifest" href="/favicon/site.webmanifest" />
+	</head>
+	<body>
+		<div id="game">
+			<div class="startScreen">
+				<h1>Mining Empire</h1>
+				<h2>Control</h2>
+				<div class="control">
+					<div class="wasd">
+						<img
+							src="/src/assets/img/Button/buttonWASD.png"
+							class="button"
+							alt="WASD"
+						/>
+						<p><b>Walking</b></p>
+					</div>
+					<div class="e">
+						<img
+							src="/src/assets/img/Button/buttonE.png"
+							class="button"
+							alt="E"
+						/>
+						<p><b>Using</b></p>
+					</div>
+					<div class="x">
+						<img
+							src="/src/assets/img/Button/buttonX.png"
+							class="button"
+							alt="X"
+						/>
+						<p><b>Creating a staircase</b></p>
+					</div>
+					<div class="k">
+						<div class="breaking">
+							<img
+								src="/src/assets/img/Button/buttonK.png"
+								class="button"
+								alt="K"
+							/>
+							<span>+</span>
+							<img
+								src="/src/assets/img/Button/buttonWASD.png"
+								class="button"
+								alt="WASD"
+							/>
+						</div>
+						<p><b>Breaking blocks</b></p>
+					</div>
+				</div>
+				<h2>Types of resources</h2>
+				<div class="resources">
+					<div class="coal">
+						<div class="resImg">
+							<img src="/src/assets/img/UI/Frame_res1.png" alt="res" /><img
+								src="/src/assets/img/Lvl1/lvl1_res1.png"
+								alt="res"
+							/>
+						</div>
+						<p>Coal</p>
+					</div>
+					<div class="iron">
+						<div class="resImg">
+							<img src="/src/assets/img/UI/Frame_res2.png" alt="res" /><img
+								src="/src/assets/img/Lvl1/lvl1_res2.png"
+								alt="res"
+							/>
+						</div>
+						<p>Iron</p>
+					</div>
+					<div class="gold">
+						<div class="resImg">
+							<img src="/src/assets/img/UI/Frame_res3.png" alt="res" /><img
+								src="/src/assets/img/Lvl2/lvl2_res3.png"
+								alt="res"
+							/>
+						</div>
+						<p>Gold</p>
+					</div>
+					<div class="tungsten">
+						<div class="resImg">
+							<img src="/src/assets/img/UI/Frame_res4.png" alt="res" /><img
+								src="/src/assets/img/Lvl3/lvl3_res4.png"
+								alt="res"
+							/>
+						</div>
+						<p>Tungsten</p>
+					</div>
+					<div class="titanium">
+						<div class="resImg">
+							<img src="/src/assets/img/UI/Frame_res5.png" alt="res" /><img
+								src="/src/assets/img/Lvl4/lvl4_res5.png"
+								alt="res"
+							/>
+						</div>
+						<p>Titanium</p>
+					</div>
+					<div class="jewel">
+						<div class="resImg">
+							<img src="/src/assets/img/UI/Frame_res6.png" alt="res" /><img
+								src="/src/assets/img/Lvl5/lvl5_res6.png"
+								alt="res"
+							/>
+						</div>
+						<p>Jewel</p>
+					</div>
+				</div>
+				<h2 class="warning">Warning</h2>
+				<p class="warningText">
+					For the best game, a full-scale screen will be used, when you click on
+					the Start Game button, the game will start and a full-scale screen
+					will open, to exit it, press "F11" or "ESC"
+				</p>
+				<button id="startGame">Start Game</button>
+			</div>
+			<div id="UI">
+				<div class="res">
+					<img
+						src="/src/assets/img/UI/Frame_res7.png"
+						class="frame moneyImg"
+						style="left: 10px"
+					/><span class="money Num" style="left: 10px">0</span>
+					<img
+						src="/src/assets/img/UI/Frame_res1.png"
+						class="frame res1Img"
+						style="left: 110px"
+					/><span class="res1 Num" style="left: 110px">0</span>
+					<img
+						src="/src/assets/img/UI/Frame_res2.png"
+						class="frame res2Img"
+						style="left: 210px"
+					/><span class="res2 Num" style="left: 210px">0</span>
+					<img
+						src="/src/assets/img/UI/Frame_res3.png"
+						class="frame res3Img"
+						style="left: 310px"
+					/><span class="res3 Num" style="left: 310px">0</span>
+					<img
+						src="/src/assets/img/UI/Frame_res4.png"
+						class="frame res4Img"
+						style="left: 410px"
+					/><span class="res4 Num" style="left: 410px">0</span>
+					<img
+						src="/src/assets/img/UI/Frame_res5.png"
+						class="frame res5Img"
+						style="left: 510px"
+					/><span class="res5 Num" style="left: 510px">0</span>
+					<img
+						src="/src/assets/img/UI/Frame_res6.png"
+						class="frame res6Img"
+						style="left: 610px"
+					/><span class="res6 Num" style="left: 610px">0</span>
+				</div>
+				<div class="notification">
+					<p></p>
+				</div>
+			</div>
+			<div class="market">
+				<div class="selector">
+					<div class="sell">Sell</div>
+					<div class="buy">Buy</div>
+				</div>
+				<div class="sellBlock" style="display: none">
+					<div class="cost">
+						<img src="/src/assets/img/UI/Frame_res1.png" class="frameMarket" />
+						<div class="Settings">
+							<p class="piece">= 10 coins for 1 piece</p>
+							<p class="sellRes1 sellBtn">SELL</p>
+						</div>
+					</div>
+					<div class="cost">
+						<img src="/src/assets/img/UI/Frame_res2.png" class="frameMarket" />
+						<div class="Settings">
+							<p class="piece">= 20 coins for 1 piece</p>
+							<p class="sellRes2 sellBtn">SELL</p>
+						</div>
+					</div>
+					<div class="cost">
+						<img src="/src/assets/img/UI/Frame_res3.png" class="frameMarket" />
+						<div class="Settings">
+							<p class="piece">= 30 coins for 1 piece</p>
+							<p class="sellRes3 sellBtn">SELL</p>
+						</div>
+					</div>
+					<div class="cost">
+						<img src="/src/assets/img/UI/Frame_res4.png" class="frameMarket" />
+						<div class="Settings">
+							<p class="piece">= 40 coins for 1 piece</p>
+							<p class="sellRes4 sellBtn">SELL</p>
+						</div>
+					</div>
+					<div class="cost">
+						<img src="/src/assets/img/UI/Frame_res5.png" class="frameMarket" />
+						<div class="Settings">
+							<p class="piece">= 50 coins for 1 piece</p>
+							<p class="sellRes5 sellBtn">SELL</p>
+						</div>
+					</div>
+					<div class="cost">
+						<img src="/src/assets/img/UI/Frame_res6.png" class="frameMarket" />
+						<div class="Settings">
+							<p class="piece">= 60 coins for 1 piece</p>
+							<p class="sellRes6 sellBtn">SELL</p>
+						</div>
+					</div>
+				</div>
+				<div class="buyBlock" style="display: none">
+					<div class="cost">
+						<img src="/src/assets/img/UI/Frame_res1.png" class="frameMarket" />
+						<div class="Settings">
+							<p class="piece">= 20 coins for 1 piece</p>
+							<p class="buyRes1 buyBtn">BUY</p>
+						</div>
+					</div>
+					<div class="cost">
+						<img src="/src/assets/img/UI/Frame_res2.png" class="frameMarket" />
+						<div class="Settings">
+							<p class="piece">= 40 coins for 1 piece</p>
+							<p class="buyRes2 buyBtn">BUY</p>
+						</div>
+					</div>
+					<div class="cost">
+						<img src="/src/assets/img/UI/Frame_res3.png" class="frameMarket" />
+						<div class="Settings">
+							<p class="piece">= 60 coins for 1 piece</p>
+							<p class="buyRes3 buyBtn">BUY</p>
+						</div>
+					</div>
+					<div class="cost">
+						<img src="/src/assets/img/UI/Frame_res4.png" class="frameMarket" />
+						<div class="Settings">
+							<p class="piece">= 80 coins for 1 piece</p>
+							<p class="buyRes4 buyBtn">BUY</p>
+						</div>
+					</div>
+					<div class="cost">
+						<img src="/src/assets/img/UI/Frame_res5.png" class="frameMarket" />
+						<div class="Settings">
+							<p class="piece">= 100 coins for 1 piece</p>
+							<p class="buyRes5 buyBtn">BUY</p>
+						</div>
+					</div>
+					<div class="cost">
+						<img src="/src/assets/img/UI/Frame_res6.png" class="frameMarket" />
+						<div class="Settings">
+							<p class="piece">= 120 coins for 1 piece</p>
+							<p class="buyRes6 buyBtn">BUY</p>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="forge">
+				<h2>You need</h2>
+				<div class="resource">
+					<div class="resource1"></div>
+					<div class="resource2"></div>
+					<div class="resource3"></div>
+				</div>
+				<div class="createPick">Create Pick</div>
+			</div>
+		</div>
+
+		<script type="module" src="/src/main.js"></script>
+	</body>
+</html>
