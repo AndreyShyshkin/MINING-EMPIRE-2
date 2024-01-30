@@ -8,7 +8,7 @@ export class Canvas {
 		this.canvas = document.querySelector('#game')
 		this.WScale = 16
 		this.HScale = 9
-		this.updateSize()
+		//this.updateSize()
 		for (let i = 0; i < LayersCount; i++) {
 			this.Layers.push(new Layer(document.querySelector('#game')))
 		}
