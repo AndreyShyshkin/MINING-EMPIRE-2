@@ -7,18 +7,37 @@ import { SceneManager } from '/src/Logic/SceneManager.js'
 let firebase = app
 
 async function writeUserData() {
-	let layer = SceneManager.Instance.mine.TC.GetLayer(20)
-	var simplifiedTilesArray = layer.map(function (tile) {
-		return {
-			IsActive: tile.IsActive,
-			Type: tile.Type,
-			Image: tile.Image.currentSrc,
-			// Add other relevant properties as needed
-		}
-	})
+	const layersData = []
+	let layerLog = SceneManager.Instance.mine.TC.GetLayer(20)
+	console.log('🚀 ~ writeUserData ~ layerLog:', layerLog)
 
-	// Converting the simplified array to JSON
-	var jsonString = JSON.stringify(simplifiedTilesArray, null, 2)
+	// Loop through all layers from 0 to 150
+	for (let layerIndex = 0; layerIndex <= 150; layerIndex++) {
+		let layer = SceneManager.Instance.mine.TC.GetLayer(layerIndex)
+
+		// Check if the layer exists before processing
+		if (layer) {
+			var simplifiedTilesArray = layer.map(function (tile) {
+				return {
+					IsActive: tile.IsActive,
+					Type: tile.Type,
+					Image: tile.Image.currentSrc,
+					Y: tile.transform.Position.Y,
+					X: tile.transform.Position.X,
+					// Add other relevant properties as needed
+				}
+			})
+
+			// Add the layer data to the array
+			layersData.push({
+				layerIndex: layerIndex,
+				tiles: simplifiedTilesArray,
+			})
+		}
+	}
+
+	// Converting the layersData array to JSON
+	var jsonString = JSON.stringify(layersData, null, 2)
 
 	const storage = getStorage()
 
