@@ -99,7 +99,7 @@ export class Player extends Entity {
 				(this.isLadder || this.bottomCollision)
 			) {
 				if (Input.GetKeyState(32)) {
-					console.log('t')
+					//console.log('t')
 					this.velocityY = this.jumpForce
 				}
 			}

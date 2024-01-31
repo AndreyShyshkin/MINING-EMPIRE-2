@@ -77,8 +77,8 @@ export class Tile extends Entity {
 						Player.Instance.transform.Size.Y / 2)
 			)
 			if (xDelta < 100 && xDelta > -100) {
-				console.log(xDelta)
-				console.log(this.transform.Position.ToString())
+				//console.log(xDelta)
+				//console.log(this.transform.Position.ToString())
 			}
 			if (this.transform.Position.Y >= 900) fill = 0.2
 			if (this.transform.Position.Y >= 1000) fill = 0.4

@@ -243,6 +243,7 @@ function Random(min, max) {
 
 function removeBlockAtCoordinates(x, y) {
 	const layer = SceneManager.Instance.mine.TC.GetLayer(y)
+	//console.log(SceneManager.Instance.mine.TC.GetLayer(20))
 	for (let i = 0; i < layer.length; i++) {
 		const block = layer[i]
 		if (

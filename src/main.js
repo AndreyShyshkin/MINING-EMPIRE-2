@@ -5,6 +5,7 @@ import { Game } from '/src/Logic/Game.js'
 import { CreateImageByPath } from '/src/Logic/RenderImage.js'
 import { SceneManager } from '/src/Logic/SceneManager.js'
 import resource from '/src/Logic/inventory.js'
+import writeUserData from '/src/Logic/save.js'
 import cave from '/src/Map/cave.js'
 import village from '/src/Map/village.js'
 import { Vector2 } from '/src/Math/Vector2.js'
@@ -93,6 +94,9 @@ function Update() {
 	res5.innerHTML = resource.res5
 	res6.innerHTML = resource.res6
 }
+
+let save = document.querySelector('#save')
+save.addEventListener('click', writeUserData)
 
 function drawText(context, text, x, y, font, color, align = 'left') {
 	context.font = font

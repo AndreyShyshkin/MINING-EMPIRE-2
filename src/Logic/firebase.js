@@ -7,6 +7,8 @@ import { initializeApp } from 'firebase/app'
 const firebaseConfig = {
 	apiKey: 'AIzaSyAt_Vgako8dtNXRu5a4TVH_p6fz_Y_cWhQ',
 	authDomain: 'mining-empire-2.firebaseapp.com',
+	databaseURL:
+		'https://mining-empire-2-default-rtdb.europe-west1.firebasedatabase.app',
 	projectId: 'mining-empire-2',
 	storageBucket: 'mining-empire-2.appspot.com',
 	messagingSenderId: '550635237577',

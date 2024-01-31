@@ -6,7 +6,7 @@ let resource3 = document.querySelector('.resource3')
 let createPick = document.querySelector('.createPick')
 
 function forgeLogic() {
-	console.log(Player.Instance.damage)
+	//console.log(Player.Instance.damage)
 	if (resource.lvlPick == 1) {
 		resource1.innerHTML = 'Coal 10'
 		resource2.innerHTML = 'Iron 10'
