@@ -1,14 +1,17 @@
 //import { getDatabase, ref, set } from 'firebase/database'
+import { getAuth, onAuthStateChanged } from 'firebase/auth'
 import { getDownloadURL, getStorage, ref, uploadString } from 'firebase/storage'
 import { app } from './firebase'
 //import resource from './inventory'
 import { SceneManager } from '/src/Logic/SceneManager.js'
 
 let firebase = app
+const auth = getAuth()
 
 async function writeUserData() {
 	const layersData = []
-	let layerLog = SceneManager.Instance.mine.TC.GetLayer(20)
+
+	let layerLog = SceneManager.Instance.mine.TC.GetLayer(6)
 	console.log('🚀 ~ writeUserData ~ layerLog:', layerLog)
 
 	// Loop through all layers from 0 to 150
@@ -19,11 +22,10 @@ async function writeUserData() {
 		if (layer) {
 			var simplifiedTilesArray = layer.map(function (tile) {
 				return {
-					IsActive: tile.IsActive,
 					Type: tile.Type,
-					Image: tile.Image.currentSrc,
-					Y: tile.transform.Position.Y,
-					X: tile.transform.Position.X,
+					Block: tile.Image.currentSrc.match(/([\w,\s-]+)\.[A-Za-z]{3}/)[1],
+					Y: tile.transform.Position.Y / 100,
+					X: tile.transform.Position.X / 100,
 					// Add other relevant properties as needed
 				}
 			})
@@ -42,26 +44,34 @@ async function writeUserData() {
 	const storage = getStorage()
 
 	// Upload the JSON string directly to Firebase Storage
-	const storageRef = ref(storage, 'some-child/tilesData.json')
-	await uploadString(storageRef, jsonString, 'raw')
+	onAuthStateChanged(auth, async user => {
+		if (user) {
+			const uid = user.uid
+			const storageRef = ref(storage, 'some-child/tilesData' + uid + '.json')
+			await uploadString(storageRef, jsonString, 'raw')
 
-	// Retrieve the download URL for the uploaded file
-	const downloadURL = await getDownloadURL(storageRef)
+			// Retrieve the download URL for the uploaded file
+			const downloadURL = await getDownloadURL(storageRef)
 
-	console.log('JSON file uploaded successfully!')
-	console.log('Download URL:', downloadURL)
-	/*
-	const db = getDatabase()
-	set(ref(db, 'users/' + '1'), {
-		lvlPick: resource.lvlPick,
-		money: resource.money,
-		res1: resource.res1,
-		res2: resource.res2,
-		res3: resource.res3,
-		res4: resource.res4,
-		res5: resource.res5,
-		res6: resource.res6,
-	})*/
+			console.log('JSON file uploaded successfully!')
+			console.log('Download URL:', downloadURL)
+
+			/*
+			const db = getDatabase()
+			set(ref(db, 'users/' + 'uid'), {
+				lvlPick: resource.lvlPick,
+				money: resource.money,
+				res1: resource.res1,
+				res2: resource.res2,
+				res3: resource.res3,
+				res4: resource.res4,
+				res5: resource.res5,
+				res6: resource.res6,
+			})*/
+		} else {
+			console.log('ERROR user not login')
+		}
+	})
 }
 
 export default writeUserData

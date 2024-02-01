@@ -5,6 +5,7 @@ import {
 	signInWithEmailAndPassword,
 	signInWithPopup,
 	signOut,
+	onAuthStateChanged,
 } from 'firebase/auth'
 import { app } from './firebase'
 
@@ -19,6 +20,15 @@ let password
 const firebase = app
 const auth = getAuth()
 const provider = new GoogleAuthProvider()
+
+onAuthStateChanged(auth, user => {
+	if (user) {
+		const uid = user.uid
+		console.log(uid)
+	} else {
+		console.log('user not login')
+	}
+})
 
 const registerUser = () => {
 	email = document.querySelector('#emailRegister').value
