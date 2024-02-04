@@ -7,6 +7,7 @@ import { SceneManager } from '/src/Logic/SceneManager.js'
 import resource from '/src/Logic/inventory.js'
 import writeUserData from '/src/Logic/save.js'
 import loadWorldFromFirebase from '/src/Map/cave.js'
+//import cave from '/src/Map/cave.js'
 import village from '/src/Map/village.js'
 import { Vector2 } from '/src/Math/Vector2.js'
 
@@ -42,7 +43,7 @@ let player = new Player(
 
 village(SM.town.TC)
 loadWorldFromFirebase()
-
+//cave()
 window.onbeforeunload = function () {
 	return 'Are you sure?'
 }

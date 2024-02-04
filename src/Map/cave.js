@@ -6,6 +6,7 @@ import { SceneManager } from '/src/Logic/SceneManager.js'
 import { Vector2 } from '/src/Math/Vector2.js'
 import { EntityTypes } from '/src/Physics/EntityTypes.js'
 
+import axios from 'axios'
 import { getDownloadURL, getStorage, ref } from 'firebase/storage'
 import { app } from '../Logic/firebase'
 
@@ -154,14 +155,16 @@ async function loadWorldFromFirebase() {
 			if (user) {
 				const uid = user.uid
 				const storage = getStorage()
-				const storageRef = ref(storage, 'some-child/tilesData' + uid + '.json')
-
 				try {
+					const storageRef = await ref(
+						storage,
+						`some-child/tilesData${uid}.json`
+					)
 					const downloadURL = await getDownloadURL(storageRef)
-					const response = await fetch(downloadURL)
+					const response = await axios.get(downloadURL)
 					const worldData = await response.json()
 
-					const layers = worldData.layers // Adjust the property name accordingly
+					const layers = worldData // Adjust the property name accordingly
 
 					for (const layerData of layers) {
 						const tiles = layerData.tiles
